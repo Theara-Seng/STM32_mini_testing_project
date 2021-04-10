@@ -1,0 +1,10 @@
+23:05:20 **** Build of configuration Debug for project tadashi_amada1 ****
+make -j8 all 
+arm-none-eabi-size   tadashi_amada1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5848	     20	   1572	   7440	   1d10	tadashi_amada1.elf
+Finished building: default.size.stdout
+ 
+
+23:05:20 Build Finished. 0 errors, 0 warnings. (took 628ms)
+

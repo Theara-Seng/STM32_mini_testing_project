@@ -1,0 +1,25 @@
+23:44:19 **** Incremental Build of configuration Debug for project uart_IT ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:181:33: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit_IT' differ in signedness [-Wpointer-sign]
+    HAL_UART_Transmit_IT(&huart2,buffer,strlen((char*)buffer));
+                                 ^~~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:702:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:163:8: warning: unused variable 'data' [-Wunused-variable]
+   char data[20]="hello world\n";
+        ^~~~
+arm-none-eabi-gcc -o "uart_IT.elf" @"objects.list"   -mcpu=cortex-m3 -T"/home/tadashi/STM32CubeIDE/workspace_1.5.1/uart_IT/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="uart_IT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: uart_IT.elf
+ 
+arm-none-eabi-size   uart_IT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16208	    120	   1776	  18104	   46b8	uart_IT.elf
+Finished building: default.size.stdout
+ 
