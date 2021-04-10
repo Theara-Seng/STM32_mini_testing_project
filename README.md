@@ -1,0 +1,1 @@
+# STM32_mini_testing_project
