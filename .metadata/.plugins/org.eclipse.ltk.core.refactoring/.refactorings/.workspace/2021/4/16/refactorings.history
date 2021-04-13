@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ADC_IN&apos; to &apos;ADC_pollConversion_multiple_channel&apos;" description="Rename resource &apos;ADC_IN&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/ADC_IN" name="ADC_pollConversion_multiple_channel" stamp="1618333842749" updateReferences="true"/>
+</session>
