@@ -1,0 +1,47 @@
+22:04:16 **** Incremental Build of configuration Debug for project HC-SR04 ultrasonic_sensor ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:165:4: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+    sprintf(buffer,"distance=%02d %d cm \n",Distance,(Distance%10)+48);
+    ^~~~~~~
+../Core/Src/main.c:165:4: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:165:4: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:165:32: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+    sprintf(buffer,"distance=%02d %d cm \n",Distance,(Distance%10)+48);
+                             ~~~^
+                             %02ld
+../Core/Src/main.c:165:35: warning: format '%d' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+    sprintf(buffer,"distance=%02d %d cm \n",Distance,(Distance%10)+48);
+                                  ~^                 ~~~~~~~~~~~~~~~~
+                                  %ld
+../Core/Src/main.c:166:34: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit_IT' differ in signedness [-Wpointer-sign]
+    HAL_UART_Transmit_IT(&huart2, buffer, sizeof(buffer));
+                                  ^~~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:702:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:153:7: warning: unused variable 'hello' [-Wunused-variable]
+  char hello[20]="hello world";
+       ^~~~~
+arm-none-eabi-gcc -o "HC-SR04 ultrasonic_sensor.elf" @"objects.list"   -mcpu=cortex-m3 -T"/home/tadashi/STM32CubeIDE/workspace_1.5.1/STM32_mini_testing_project/HC-SR04 ultrasonic_sensor/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="HC-SR04 ultrasonic_sensor.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: HC-SR04 ultrasonic_sensor.elf
+ 
+arm-none-eabi-objdump -h -S  HC-SR04\ ultrasonic_sensor.elf  > "HC-SR04 ultrasonic_sensor.list"
+arm-none-eabi-objcopy  -O binary  HC-SR04\ ultrasonic_sensor.elf  "HC-SR04 ultrasonic_sensor.bin"
+arm-none-eabi-size   HC-SR04\ ultrasonic_sensor.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15720	    120	   1792	  17632	   44e0	HC-SR04 ultrasonic_sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: HC-SR04 ultrasonic_sensor.bin
+ 
+Finished building: HC-SR04 ultrasonic_sensor.list
+ 
+
+22:04:17 Build Finished. 0 errors, 6 warnings. (took 1s.27ms)
+

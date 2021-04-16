@@ -62,6 +62,8 @@ static void MX_USART2_UART_Init(void);
 uint32_t adc_val=0;
 char buffer[10];
 uint8_t  data[2000];
+int count=0;
+
 /* USER CODE END 0 */
 
 /**
@@ -87,7 +89,11 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  for (int i=0; i<2000; i++)
+	        {
+	          data[i] = 'x';
+	        }
+	 HAL_UART_Transmit_IT(&huart2, data, sizeof(data));
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -104,11 +110,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  for (int i=0; i<2000; i++)
-	        {
-	          data[i] = 'x';
-	        }
-	 HAL_UART_Transmit_IT(&huart2, data, sizeof(data));
+	  count++;
+	  adc_val=HAL_ADC_GetValue(&hadc1);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -258,7 +261,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
  //  HAL_UART_Transmit_IT(&huart2, data, sizeof (data));
 }
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-	adc_val=HAL_ADC_GetValue(&hadc1);
+
 	//  sprintf(buffer,"adc=%02d",adc_val);
     //  HAL_UART_Transmit_IT(&huart2, buffer, strlen((char*)buffer));
 }

@@ -1,1 +1,4 @@
 1618333842749	Rename resource 'ADC_IN'
+1618474747629	Delete resource 'ADC_pollConversion_multiple_channel/reatime_clock_I2C'
+1618474756465	Delete resource 'ADC_pollConversion_multiple_channel'
+1618547655637	Rename resource 'TImer'
